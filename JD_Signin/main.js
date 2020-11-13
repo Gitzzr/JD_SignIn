@@ -1,6 +1,9 @@
 /**
  * @Author zzr
 **/
+/**
+ * @Author zzr
+**/
 auto.waitFor()
 
 //判断是否第一次打开
@@ -26,6 +29,16 @@ function bk2() {
         sleep(500);
         back();
         i++;
+    }
+}
+// 等待页面加载
+function jdWaitFor(params) {
+    sleep(2000);
+    if (!textContains(params).exists()) {
+        console.log("找不到控件，使用阻塞模拟加载");
+        sleep(5000);
+    } else {
+        textContains(params).waitFor();
     }
 }
 //显示控制台
@@ -104,7 +117,7 @@ function JdjrSignIn() {
 //京东签到领豆
 function lingdou() {
     console.log("等待京东签到领豆页面加载完成");
-    textContains("签到").waitFor();
+    jdWaitFor("签到");
     console.log("页面加载成功，开始签到");
     if ((text("新人连签京豆礼包").exists()) || (text("京豆可抵钱！").exists())) {
         sl();
@@ -138,11 +151,12 @@ function lingdou() {
 //京东签到领券
 function lingquan() {
     console.log("等待京东签到领券页面加载完成");
-    textContains("签").waitFor();
+    jdWaitFor("推荐");
     console.log("页面加载成功，开始签到");
     if (!textContains("明天提醒我").exists()) {
         console.log("开始点击 立即领红包");
         while (!click("立即领红包"));
+        sleep(500);
         if (text("您还有现金红包未领取").exists()) {
             console.log("您还有现金红包未领取");
             back();
@@ -162,15 +176,21 @@ function lingquan() {
 
 //拍拍二手签到有礼
 function paipai() {
-    console.log("等待拍拍二手签到页面加载完成");
-    textContains("签到").waitFor();
-    console.log("页面加载成功，开始签到");
     var sigin = "签到";
-    // 匹配规则
-    var patt = "\\b[\u4e00-\u9fa5]{4}\\d[\u4e00-\u9fa5]+\\b";
-    //正则查找按钮的签到天数
-    var siginDay = textMatches(patt).findOne().text();
-    
+    var siginDay = null;
+    console.log("等待拍拍二手签到页面加载完成");
+    jdWaitFor("签到");
+    // textContains("签到").waitFor();
+    console.log("拍拍二手签到页面加载完成");
+
+    if (!text(sigin).exists() || !desc(sigin).exists()) {
+        // 匹配规则
+        var patt = "\\b[\u4e00-\u9fa5]{4}\\d[\u4e00-\u9fa5]+\\b";
+        //正则查找按钮的签到天数
+        var siginDay = textMatches(patt).findOne().text();
+        this.siginDay = siginDay;
+    }
+
     if (text(sigin).exists() || desc(sigin).exists()) {
         console.log("开始拍拍二手签到");
         sl();
@@ -187,14 +207,13 @@ function paipai() {
             back();
             sl();
             if (text(siginDay).exists()) {
-                console.log(siginDay);
+                console.log("已" + siginDay);
             }
         }
     } else if (text(siginDay).exists()) {
-        console.log(siginDay);
-        console.log("京东_拍拍二手签到： 今日已完成签到");
+        console.log("京东_拍拍二手签到： 今日已完成签到,已" + siginDay);
     } else if (!text(sigin).exists() && !text(siginDay).exists()) {
-        console.log("错误！请重新启动脚本，可能该控件已经更新，请联系作者qq2282481204进行反馈。");
+        console.log("出错啦！请尝试重新启动脚本，或可能该控件已经更新，请联系作者qq2282481204进行反馈。");
         sleep(3000);
     }
     sl();
