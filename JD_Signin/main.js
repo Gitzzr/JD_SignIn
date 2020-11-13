@@ -1,9 +1,6 @@
 /**
  * @Author zzr
 **/
-/**
- * @Author zzr
-**/
 auto.waitFor()
 
 //判断是否第一次打开
@@ -153,7 +150,7 @@ function lingquan() {
     console.log("等待京东签到领券页面加载完成");
     jdWaitFor("推荐");
     console.log("页面加载成功，开始签到");
-    if (!textContains("明天提醒我").exists()) {
+    if (!textContains("明天提醒我").exists() && text("立即领红包").exists()) {
         console.log("开始点击 立即领红包");
         while (!click("立即领红包"));
         sleep(500);
