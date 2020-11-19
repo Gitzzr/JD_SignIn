@@ -559,11 +559,11 @@ function AutoTask(str) {
     //判断是否超出屏幕
     if (at.centerY() > height / 1.0675182481751824) {
         console.log("控件跑屏幕底下了，我试下滑动能否找到控件");
-        swipe(at.centerX(), height * 4 / 5, at.centerX(), height * 3 / 5, 500);
+        swipe(at.centerX(), height * 4 / 5, at.centerX(), height * 2 / 5, 500);
         sleep(1000);
     } else if (at.centerY() < height / 2.7209302325581395) {
         console.log("控件跑上边了，我试下滑动能否找到控件");
-        swipe(at.centerX(), height * 3 / 5, at.centerX(), height * 4 / 5, 500);
+        swipe(at.centerX(), height * 2 / 5, at.centerX(), height * 4 / 5, 500);
         sleep(1000);
     }
     sleep(300);
