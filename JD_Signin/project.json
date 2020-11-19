@@ -8,12 +8,12 @@
     },
     "encryptLevel": 0,
     "useFeatures": [],
-    "icon": "res/logo.png",
+    "icon": "res/JDsignin-logo.png",
     "launchConfig": {
       "displaySplash": true,
       "hideLogs": false,
-      "splashIcon": "res/splashIcon.png",
-      "splashText": "JD签到稳定版",
+      "splashIcon": "res/JDsignin-logo.png",
+      "splashText": "JD签到Pro_体验版",
       "stableMode": true
     },
     "main": "main.js",
@@ -22,7 +22,7 @@
       "removeOpenCv": true,
       "unusedResources": false
     },
-    "packageName": "org.zzr.qiandao",
+    "packageName": "org.zzr.jdsignin",
     "scripts": {},
     "signingConfig": {
       "alias": "",
@@ -30,5 +30,5 @@
       "uuid": ""
     },
     "versionCode": 2,
-    "versionName": "2.2.4.11"
+    "versionName": "2.3.0"
   }
