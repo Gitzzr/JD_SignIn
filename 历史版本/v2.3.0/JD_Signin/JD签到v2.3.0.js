@@ -561,19 +561,21 @@ function AutoTask(str) {
         console.log("控件跑屏幕底下了，我试下滑动能否找到控件");
         swipe(at.centerX(), height * 4 / 5, at.centerX(), height * 2 / 5, 500);
         sleep(1000);
+        //重新定位控件位置
+        at = text(str).findOne().bounds();
     } else if (at.centerY() < height / 2.7209302325581395) {
         console.log("控件跑上边了，我试下滑动能否找到控件");
         swipe(at.centerX(), height * 2 / 5, at.centerX(), height * 4 / 5, 500);
         sleep(1000);
-    }
-    sleep(300);
-    if (at.centerY() > height / 2.7209302325581395 && at.centerY() < height / 1.0675182481751824) {
-        console.log("控件在屏幕中");
         //重新定位控件位置
         at = text(str).findOne().bounds();
+    }
+    if (at.centerY() > height / 2.7209302325581395 && at.centerY() < height / 1.0675182481751824) {
+        console.log("控件在屏幕中");
+        click(at.centerX(), at.centerY());
     } else {
         console.log("找不到控件,请联系作者修复bug");
-        return;
+        break;
     }
     click(at.centerX(), at.centerY());
     console.log("点击成功");
@@ -702,7 +704,7 @@ function store() {
         backCN(1);
     }
 }
-//种豆得豆任务--去关注，关注频道任务
+//种豆得豆任务--去关注动作，关注频道任务
 function follow() {
     if (text("关注频道任务").exists()) {
         text("进入并关注").waitFor();
