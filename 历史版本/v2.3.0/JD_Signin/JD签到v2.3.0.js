@@ -575,7 +575,7 @@ function AutoTask(str) {
         click(at.centerX(), at.centerY());
     } else {
         console.log("找不到控件,请联系作者修复bug");
-        break;
+        return;
     }
     click(at.centerX(), at.centerY());
     console.log("点击成功");
@@ -606,13 +606,15 @@ function AutoTask(str) {
 }
 //种豆得豆任务界面点击按钮动作
 function AutoPlay() {
+    var qgzi = 0;
     while (text("去逛逛").exists()) {
         AutoTask("去逛逛");
     }
     console.log("任务：去逛逛 --完成--");
     sleep(2000);
-    while (text("去关注").exists()) {
+    while (text("去关注").exists() && qgzi<10) {
         AutoTask("去关注");
+        qgzi++;
     }
     console.log("任务：去关注 --完成--");
     sleep(2000);
@@ -831,8 +833,13 @@ function backCN(params) {
 function CheckNetwork() {
     while (text("网络请求失败").exists()) {
         console.log("网络请求失败,尝试重新加载");
-        var b = text("重新加载").findOne().bounds();
-        click(b.centerX(), b.centerY());
+        var b = text("重新加载").findOne(5000).bounds();
+        if (text("重新加载").exists()) {
+            console.log("点击重新加载");
+            click(b.centerX(), b.centerY());
+        } else {
+            console.log("找不到重新加载按钮");
+        }
         sleep(1500);
     }
 }
