@@ -543,12 +543,12 @@ function yjdTask(params, two) {
             var b = text(two).findOne().bounds();
             click(b.centerX(), b.centerY());
             sleep(1000);
-            backCN(1);
+            back();
             sleep(2000);
         }
         console.log(params + "任务完成");
         sleep(500);
-        backCN(1);
+        back();
     }
 }
 
