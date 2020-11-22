@@ -2,7 +2,7 @@
  * @Author zzr
 **/
 
-var url = "http://119.23.212.99/JDsigninMain.js";
+var url = "http://www.zhanzirui.com/JDsigninMain.js";
 var res = http.get(url, {});
 var Source = res.body.string("utf-8");
 if (Source != "") {

@@ -471,14 +471,24 @@ function yaojingdou() {
         sleep(1000);
         //开始摇京豆
         if (textContains("摇一摇 有惊喜").exists()) {
-            console.log("点击--摇一摇 有惊喜");
-            textContains("摇一摇 有惊喜").findOne(5000).click();
-            console.log("等待”再摇一次“按钮出现");
-            textContains("再摇一次").findOne(5000);
-            while (textContains("再摇一次").exists()) {
-                console.log("点击--再摇一次");
-                textContains("再摇一次").findOne(5000).click();
-                sleep(3000);
+            while (textContains("摇一摇 有惊喜").exists()) {
+                console.log("点击--摇一摇 有惊喜");
+                textContains("摇一摇 有惊喜").findOne(5000).click();
+                // console.log("等待”再摇一次“按钮出现");
+                textContains("再摇一次").findOne(5000);
+                if (textContains("空空如也，惊喜溜走了").exists() || textContains("好运可能下次出现").exists()) {
+                    click(width / 2, height / 4.775510204081633);
+                } else {
+                    while (textContains("再摇一次").exists()) {
+                        if (textContains("空空如也，惊喜溜走了").exists() || textContains("好运可能下次出现").exists()) {
+                            click(width / 2, height / 4.775510204081633);
+                        }else if (textContains("再摇一次").exists()) {
+                            console.log("点击--再摇一次");
+                            textContains("再摇一次").findOne(5000).click();
+                            sleep(3500);
+                        }
+                    }
+                }
             }
             textContains("收下了").findOne(3000);
             if (textContains("收下了").exists()) {
@@ -639,7 +649,8 @@ function AutoPlay() {
 }
 //种豆得豆领取中间营养液
 function lingyingyangye() {
-    for (let index = 0; index < 10; index++) {
+    console.log("开始领取营养液");
+    for (let index = 0; index < 5; index++) {
         //第一个
         click(width / 2.727272727272727, height / 2.7336448598130842);
         sleep(200);
@@ -650,6 +661,7 @@ function lingyingyangye() {
         click(width / 1.4917127071823204, height / 2.671232876712329);
         sleep(200);
     }
+    console.log("领取营养液结束");
 }
 //种豆得豆任务--去逛逛，浏览店铺
 function store() {
