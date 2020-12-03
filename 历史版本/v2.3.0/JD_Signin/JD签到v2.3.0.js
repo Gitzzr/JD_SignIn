@@ -383,9 +383,13 @@ function zhongdoudedou() {
         click(width / 5.070422535211268, height / 2.9770992366412212);
         sleep(5000);
     }
-    for (let i = 0; i < 5; i++) {
-        click(width / 2, height / 4.9787234042553195);
+    for (let i = 0; i < 2; i++) {
+        click(width / 2, height / 2);
         sleep(1000);
+        if (textContains("开心收下").exists()) {
+            var shouxia = textContains("开心收下").findOne().bounds();
+            click(shouxia.centerX(), shouxia.centerY());
+        }
     }
     console.log("点击更多任务");
     var gdrw = textContains("更多任务").findOne().bounds();
@@ -785,7 +789,7 @@ function qutiaoxuan() {
 }
 //种豆得豆任务--去挑选动作
 function qutiaoxuanAction() {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 10; i++) {
         console.log("点击 选ta并关注");
         // console.log("点击坐标：" + width / 4.595744680851064, height / 1.5832205683355887);
         click(width / 4.595744680851064, height / 1.5832205683355887);
