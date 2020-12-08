@@ -389,6 +389,11 @@ function zhongdoudedou() {
         if (textContains("开心收下").exists()) {
             var shouxia = textContains("开心收下").findOne().bounds();
             click(shouxia.centerX(), shouxia.centerY());
+            sleep(300);
+        }else if (textContains("收下京豆").exists()) {
+            var shouxia2 = textContains("收下京豆").findOne().bounds();
+            click(shouxia2.centerX(), shouxia2.centerY());
+            sleep(300);
         }
     }
     console.log("点击更多任务");
@@ -594,7 +599,7 @@ function AutoTask(str) {
     click(at.centerX(), at.centerY());
     console.log("点击成功");
     CheckNetwork();
-    sleep(2000);
+    sleep(1000);
     if (str == "去逛逛") {
         store();
         sleep(500);
@@ -654,7 +659,7 @@ function AutoPlay() {
 //种豆得豆领取中间营养液
 function lingyingyangye() {
     console.log("开始领取营养液");
-    for (let index = 0; index < 5; index++) {
+    for (let index = 0; index < 6; index++) {
         //第一个
         click(width / 2.727272727272727, height / 2.7336448598130842);
         sleep(200);
@@ -679,7 +684,7 @@ function store() {
         if (text("进店任务").exists()) {
             var gz = text("进店并关注").findOne().bounds();
             click(gz.centerX() + 10, gz.centerY() + 20);
-            sleep(2000);
+            sleep(2500);
             if (id("nd").exists()) {
                 idContains("nd").waitFor();
                 console.log("nd");
@@ -701,16 +706,17 @@ function store() {
                 console.log("找不到控件，使用back操作");
                 back();
             }
-            sleep(1500);
+            sleep(1000);
             if (textContains("个营养液").exists()) {
                 console.log("找不到控件，使用back操作");
                 back();
+                sleep(1500);
             }
             if (textContains("营养液走丢了").exists()) {
                 console.log("找不到控件，使用back操作");
                 back();
+                sleep(1500);
             }
-            sleep(1500);
         }
         console.log("执行backCN");
         backCN(1);
