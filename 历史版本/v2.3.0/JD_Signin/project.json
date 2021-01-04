@@ -13,11 +13,11 @@
       "displaySplash": true,
       "hideLogs": false,
       "splashIcon": "res/JDsignin-logo.png",
-      "splashText": "JD签到Pro_体验版",
+      "splashText": "JD签到Pro",
       "stableMode": true
     },
     "main": "main.js",
-    "name": "JD签到",
+    "name": "JD签到Pro",
     "optimization": {
       "removeOpenCv": true,
       "unusedResources": false
@@ -30,5 +30,5 @@
       "uuid": ""
     },
     "versionCode": 2,
-    "versionName": "2.3.0"
+    "versionName": "2.3.1"
   }

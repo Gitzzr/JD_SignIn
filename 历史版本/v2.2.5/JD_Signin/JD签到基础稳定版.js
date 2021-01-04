@@ -83,17 +83,6 @@ function JdGetCoupon() {
     sleep(1500);
 }
 
-function PaipaiSignIn() {
-    //拍拍二手签到有礼
-    console.log("开始执行: 京东拍拍二手签到");
-    app.startActivity({
-        data: "openapp.jdmobile://virtual?params={\"category\":\"jump\",\"des\":\"m\",\"url\":\"https://pro.m.jd.com/mall/active/3S28janPLYmtFxypu37AYAGgivfp/index.html\"}"
-    })
-    splus();
-    paipai();
-    sleep(1500);
-}
-
 function JdjrSignIn() {
     //京东金融签到
     console.log("开始执行: 京东金融签到");
@@ -168,51 +157,6 @@ function lingquan() {
         console.log("京东_签到领券： 今日已完成");
     }
     sleep(500);
-    back();
-}
-
-//拍拍二手签到有礼
-function paipai() {
-    var sigin = "签到";
-    var siginDay = null;
-    console.log("等待拍拍二手签到页面加载完成");
-    jdWaitFor("签到");
-    // textContains("签到").waitFor();
-    console.log("拍拍二手签到页面加载完成");
-
-    if (!text(sigin).exists() && !desc(sigin).exists()) {
-        // 匹配规则
-        var patt = "\\b[\u4e00-\u9fa5]{4}\\d[\u4e00-\u9fa5]+\\b";
-        //正则查找按钮的签到天数
-        var siginDay = textMatches(patt).findOne().text();
-        // console.log("正则查找按钮的签到天数");
-        this.siginDay = siginDay;
-    }
-
-    if (text(sigin).exists() || desc(sigin).exists()) {
-        console.log("开始拍拍二手签到");
-        sl();
-        if (text(sigin).exists()) {
-            toast("使用text点击");
-            text(sigin).findOne().click();
-        } else if (desc(sigin).exists()) {
-            toast("使用desc点击");
-            desc(sigin).findOne().click();
-        }
-        sl();
-        if (text("签到成功").exists()) {
-            //关闭签到后弹出的界面
-            back();
-            sl();
-            console.log("拍拍二手签到成功");
-        }
-    } else if (text(siginDay).exists()) {
-        console.log("京东_拍拍二手签到： 今日已完成签到,已" + siginDay);
-    } else if (!text(sigin).exists() && !text(siginDay).exists()) {
-        console.log("出错啦！请尝试重新启动脚本，或可能该控件已经更新，请联系作者qq2282481204进行反馈。");
-        sleep(3000);
-    }
-    sl();
     back();
 }
 
