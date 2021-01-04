@@ -68,7 +68,6 @@ sleep(2000);
 //执行脚本任务
 JdGetBeans();
 JdGetCoupon();
-PaipaiSignIn();
 JdjrSignIn();
 
 //任务结束
@@ -119,24 +118,34 @@ function JdjrSignIn() {
 }
 
 //京东签到领豆
-function lingdou() {
-    console.log("等待京东签到领豆页面加载完成");
-    jdWaitFor("签到");
+function lingdou(){
+    console.log("等待页面加载完成");
+    textContains("签到").waitFor();
     console.log("页面加载成功，开始签到");
-    if ((text("新人连签京豆礼包").exists()) || (text("京豆可抵钱！").exists())) {
+    if((text("新人连签京豆礼包").exists()) || (text("京豆可抵钱！").exists())){
         sl();
-        click(device.height / 1.625);
+        click(device.height/1.625);
         sl();
         click("去签到领豆");
         console.log("该功能为测试功能是否成功点击或许要手动确认");
         sl();
         back();
-    } else if (text("签到领京豆").exists()) {
+    }else if(text("签到领京豆").exists()){
         console.log("开始点击-签到领京豆");
         //因为通过点击text无效  所以通过获取text的范围中心点来点击
-        var b = text("签到领京豆").findOne().bounds();
+        var b = textContains("签到领京豆").findOne().bounds();
         click(b.centerX(), b.centerY());
         sleep(2000);
+        if (!textContains("签到成功").exists() || !textContains("签到成功").exists()) {
+            console.log("没有点击到？换一种方法点击");
+            textContains("签到领京豆").findOne(2000).click();
+            sleep(2000);
+            if (!textContains("签到成功").exists()  || !textContains("签到成功").exists()) {
+                console.log("还是没有点击到？坐标方法点击");
+                click(width/2,height / 4.266666666666667);//width/2,450
+                sleep(2000);
+            }
+        }
         back();
         sleep(1500);
         if (text("已连续签到").exists()) {
@@ -144,7 +153,7 @@ function lingdou() {
             sl();
         }
         sl();
-    } else if (text("已连续签到").exists()) {
+    }else if(text("已连续签到").exists()){
         console.log("京东_签到领豆：今日已完成签到");
         sl();
     }

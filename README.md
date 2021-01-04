@@ -1,4 +1,4 @@
-# JD_SignIn - 京东签到脚本 ![](https://img.shields.io/badge/version-v2.3.0-green) ![](https://img.shields.io/badge/author-zzr-blue) ![](https://img.shields.io/badge/update-20201119-informational)
+# JD_SignIn - 京东签到脚本 ![](https://img.shields.io/badge/version-v2.3.1-green) ![](https://img.shields.io/badge/author-zzr-blue) ![](https://img.shields.io/badge/update-20201119-informational)
 
 ## 脚本简介：
 
@@ -10,7 +10,7 @@
 
 - #### 京东京豆签到（种豆得豆、双签领豆、进店领豆、抽京豆、摇京豆）;
 - #### 京东领券签到;
-- #### 京东拍拍二手签到;
+- #### 京东拍拍二手签到; （京东已去除该签到）
 - #### 京东金融签到领钢镚;
 - #### 京东金融双签领取;
   
