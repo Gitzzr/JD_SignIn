@@ -1,6 +1,6 @@
-# JD_SignIn - 京东签到脚本 ![](https://img.shields.io/badge/version-v2.3.1-green) ![](https://img.shields.io/badge/author-zzr-blue) ![](https://img.shields.io/badge/update-20201119-informational)
+# JD_SignIn - 京东签到脚本 ![](https://img.shields.io/badge/version-v2.3.2-green) ![](https://img.shields.io/badge/author-zzr-blue) ![](https://img.shields.io/badge/update-20201119-informational)
 
-## 脚本简介：
+## 脚本简介： 仅供学习，切勿商用或做其它违法用途！
 
 #### 该脚本使用autojs编写。
 
